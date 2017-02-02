@@ -28,10 +28,11 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20170202084526",
+    "changelogDate": "20170202122523",
     "entityTableName": "request_wf",
     "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
-    "angularJSSuffix": "ocrData"
+    "angularJSSuffix": "ocrData",
+    "enableEntityAudit": true
 }

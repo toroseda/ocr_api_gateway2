@@ -36,10 +36,11 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20170202084529",
+    "changelogDate": "20170202122526",
     "entityTableName": "edms_location",
     "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
-    "angularJSSuffix": "ocrData"
+    "angularJSSuffix": "ocrData",
+    "enableEntityAudit": true
 }

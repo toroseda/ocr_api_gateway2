@@ -56,15 +56,6 @@
     "proxy-middleware": "0.15.0",
     "run-sequence": "1.2.2",
     "xml2js": "0.4.17",
-    "generator-jhipster-nav-element": "0.0.5",
-    "generator-jhipster-webservice": "0.1.0",
-    "generator-jhipster-swagger-cli": "2.0.5",
-    "generator-jhipster-material": "0.0.0",
-    "generator-jhipster-entity-audit": "2.2.2",
-    "generator-jhipster-elasticsearch-reindexer": "0.2.0",
-    "generator-jhipster-entity-audit-and-delete": "2.2.2",
-    "generator-jhipster-angular-datatables": "1.3.1",
-    "generator-jhipster-basic-auth": "1.0.1",
 
     "yargs": "5.0.0"
   },

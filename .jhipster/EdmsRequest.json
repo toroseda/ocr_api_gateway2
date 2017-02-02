@@ -61,10 +61,11 @@
             "fieldType": "ZonedDateTime"
         }
     ],
-    "changelogDate": "20170202084525",
+    "changelogDate": "20170202122522",
     "entityTableName": "edms_request",
     "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
-    "angularJSSuffix": "ocrData"
+    "angularJSSuffix": "ocrData",
+    "enableEntityAudit": true
 }

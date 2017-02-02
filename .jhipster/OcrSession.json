@@ -64,10 +64,11 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20170202084523",
+    "changelogDate": "20170202122520",
     "entityTableName": "ocr_session",
     "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
-    "angularJSSuffix": "ocrData"
+    "angularJSSuffix": "ocrData",
+    "enableEntityAudit": true
 }

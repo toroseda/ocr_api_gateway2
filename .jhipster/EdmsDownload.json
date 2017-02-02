@@ -28,10 +28,11 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "20170202084530",
+    "changelogDate": "20170202122527",
     "entityTableName": "edms_download",
     "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
-    "angularJSSuffix": "ocrData"
+    "angularJSSuffix": "ocrData",
+    "enableEntityAudit": true
 }

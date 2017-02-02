@@ -54,10 +54,11 @@
             "fieldType": "LocalDate"
         }
     ],
-    "changelogDate": "20170202084531",
+    "changelogDate": "20170202122528",
     "entityTableName": "service_resp",
     "dto": "mapstruct",
     "pagination": "no",
     "service": "serviceImpl",
-    "angularJSSuffix": "ocrData"
+    "angularJSSuffix": "ocrData",
+    "enableEntityAudit": true
 }
