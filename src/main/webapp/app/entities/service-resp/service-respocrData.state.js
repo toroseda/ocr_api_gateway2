@@ -105,8 +105,8 @@
                         entity: function () {
                             return {
                                 rawJson: null,
+                                rawJsonContentType: null,
                                 documentImage: null,
-                                documentImageContentType: null,
                                 createdBy: null,
                                 startDate: null,
                                 endDate: null,

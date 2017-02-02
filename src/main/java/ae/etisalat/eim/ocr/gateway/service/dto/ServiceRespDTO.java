@@ -17,12 +17,12 @@ public class ServiceRespDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private String rawJson;
-
     @Lob
-    private byte[] documentImage;
+    private byte[] rawJson;
 
-    private String documentImageContentType;
+    private String rawJsonContentType;
+    private String documentImage;
+
     private String createdBy;
 
     private LocalDate startDate;
@@ -45,27 +45,27 @@ public class ServiceRespDTO implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getRawJson() {
+    public byte[] getRawJson() {
         return rawJson;
     }
 
-    public void setRawJson(String rawJson) {
+    public void setRawJson(byte[] rawJson) {
         this.rawJson = rawJson;
     }
-    public byte[] getDocumentImage() {
+
+    public String getRawJsonContentType() {
+        return rawJsonContentType;
+    }
+
+    public void setRawJsonContentType(String rawJsonContentType) {
+        this.rawJsonContentType = rawJsonContentType;
+    }
+    public String getDocumentImage() {
         return documentImage;
     }
 
-    public void setDocumentImage(byte[] documentImage) {
+    public void setDocumentImage(String documentImage) {
         this.documentImage = documentImage;
-    }
-
-    public String getDocumentImageContentType() {
-        return documentImageContentType;
-    }
-
-    public void setDocumentImageContentType(String documentImageContentType) {
-        this.documentImageContentType = documentImageContentType;
     }
     public String getCreatedBy() {
         return createdBy;

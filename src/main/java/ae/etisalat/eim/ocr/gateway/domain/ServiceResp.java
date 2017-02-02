@@ -29,15 +29,15 @@ public class ServiceResp implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "raw_json", nullable = false)
-    private String rawJson;
-
     @Lob
-    @Column(name = "document_image")
-    private byte[] documentImage;
+    @Column(name = "raw_json", nullable = false)
+    private byte[] rawJson;
 
-    @Column(name = "document_image_content_type")
-    private String documentImageContentType;
+    @Column(name = "raw_json_content_type", nullable = false)
+    private String rawJsonContentType;
+
+    @Column(name = "document_image")
+    private String documentImage;
 
     @Column(name = "created_by")
     private String createdBy;
@@ -74,43 +74,43 @@ public class ServiceResp implements Serializable {
         this.id = id;
     }
 
-    public String getRawJson() {
+    public byte[] getRawJson() {
         return rawJson;
     }
 
-    public ServiceResp rawJson(String rawJson) {
+    public ServiceResp rawJson(byte[] rawJson) {
         this.rawJson = rawJson;
         return this;
     }
 
-    public void setRawJson(String rawJson) {
+    public void setRawJson(byte[] rawJson) {
         this.rawJson = rawJson;
     }
 
-    public byte[] getDocumentImage() {
+    public String getRawJsonContentType() {
+        return rawJsonContentType;
+    }
+
+    public ServiceResp rawJsonContentType(String rawJsonContentType) {
+        this.rawJsonContentType = rawJsonContentType;
+        return this;
+    }
+
+    public void setRawJsonContentType(String rawJsonContentType) {
+        this.rawJsonContentType = rawJsonContentType;
+    }
+
+    public String getDocumentImage() {
         return documentImage;
     }
 
-    public ServiceResp documentImage(byte[] documentImage) {
+    public ServiceResp documentImage(String documentImage) {
         this.documentImage = documentImage;
         return this;
     }
 
-    public void setDocumentImage(byte[] documentImage) {
+    public void setDocumentImage(String documentImage) {
         this.documentImage = documentImage;
-    }
-
-    public String getDocumentImageContentType() {
-        return documentImageContentType;
-    }
-
-    public ServiceResp documentImageContentType(String documentImageContentType) {
-        this.documentImageContentType = documentImageContentType;
-        return this;
-    }
-
-    public void setDocumentImageContentType(String documentImageContentType) {
-        this.documentImageContentType = documentImageContentType;
     }
 
     public String getCreatedBy() {
@@ -254,8 +254,8 @@ public class ServiceResp implements Serializable {
         return "ServiceResp{" +
             "id=" + id +
             ", rawJson='" + rawJson + "'" +
+            ", rawJsonContentType='" + rawJsonContentType + "'" +
             ", documentImage='" + documentImage + "'" +
-            ", documentImageContentType='" + documentImageContentType + "'" +
             ", createdBy='" + createdBy + "'" +
             ", startDate='" + startDate + "'" +
             ", endDate='" + endDate + "'" +

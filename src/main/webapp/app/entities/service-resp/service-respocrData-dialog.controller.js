@@ -56,12 +56,12 @@
         }
 
 
-        vm.setDocumentImage = function ($file, serviceResp) {
+        vm.setRawJson = function ($file, serviceResp) {
             if ($file) {
                 DataUtils.toBase64($file, function(base64Data) {
                     $scope.$apply(function() {
-                        serviceResp.documentImage = base64Data;
-                        serviceResp.documentImageContentType = $file.type;
+                        serviceResp.rawJson = base64Data;
+                        serviceResp.rawJsonContentType = $file.type;
                     });
                 });
             }

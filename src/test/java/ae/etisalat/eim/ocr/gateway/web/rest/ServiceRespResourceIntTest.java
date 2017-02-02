@@ -44,13 +44,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = OcrApiGateway2App.class)
 public class ServiceRespResourceIntTest {
 
-    private static final String DEFAULT_RAW_JSON = "AAAAAAAAAA";
-    private static final String UPDATED_RAW_JSON = "BBBBBBBBBB";
+    private static final byte[] DEFAULT_RAW_JSON = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_RAW_JSON = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_RAW_JSON_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_RAW_JSON_CONTENT_TYPE = "image/png";
 
-    private static final byte[] DEFAULT_DOCUMENT_IMAGE = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_DOCUMENT_IMAGE = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_DOCUMENT_IMAGE_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_DOCUMENT_IMAGE_CONTENT_TYPE = "image/png";
+    private static final String DEFAULT_DOCUMENT_IMAGE = "AAAAAAAAAA";
+    private static final String UPDATED_DOCUMENT_IMAGE = "BBBBBBBBBB";
 
     private static final String DEFAULT_CREATED_BY = "AAAAAAAAAA";
     private static final String UPDATED_CREATED_BY = "BBBBBBBBBB";
@@ -114,8 +114,8 @@ public class ServiceRespResourceIntTest {
     public static ServiceResp createEntity(EntityManager em) {
         ServiceResp serviceResp = new ServiceResp()
                 .rawJson(DEFAULT_RAW_JSON)
+                .rawJsonContentType(DEFAULT_RAW_JSON_CONTENT_TYPE)
                 .documentImage(DEFAULT_DOCUMENT_IMAGE)
-                .documentImageContentType(DEFAULT_DOCUMENT_IMAGE_CONTENT_TYPE)
                 .createdBy(DEFAULT_CREATED_BY)
                 .startDate(DEFAULT_START_DATE)
                 .endDate(DEFAULT_END_DATE)
@@ -149,8 +149,8 @@ public class ServiceRespResourceIntTest {
         assertThat(serviceRespList).hasSize(databaseSizeBeforeCreate + 1);
         ServiceResp testServiceResp = serviceRespList.get(serviceRespList.size() - 1);
         assertThat(testServiceResp.getRawJson()).isEqualTo(DEFAULT_RAW_JSON);
+        assertThat(testServiceResp.getRawJsonContentType()).isEqualTo(DEFAULT_RAW_JSON_CONTENT_TYPE);
         assertThat(testServiceResp.getDocumentImage()).isEqualTo(DEFAULT_DOCUMENT_IMAGE);
-        assertThat(testServiceResp.getDocumentImageContentType()).isEqualTo(DEFAULT_DOCUMENT_IMAGE_CONTENT_TYPE);
         assertThat(testServiceResp.getCreatedBy()).isEqualTo(DEFAULT_CREATED_BY);
         assertThat(testServiceResp.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testServiceResp.getEndDate()).isEqualTo(DEFAULT_END_DATE);
@@ -214,9 +214,9 @@ public class ServiceRespResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(serviceResp.getId().intValue())))
-            .andExpect(jsonPath("$.[*].rawJson").value(hasItem(DEFAULT_RAW_JSON.toString())))
-            .andExpect(jsonPath("$.[*].documentImageContentType").value(hasItem(DEFAULT_DOCUMENT_IMAGE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].documentImage").value(hasItem(Base64Utils.encodeToString(DEFAULT_DOCUMENT_IMAGE))))
+            .andExpect(jsonPath("$.[*].rawJsonContentType").value(hasItem(DEFAULT_RAW_JSON_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].rawJson").value(hasItem(Base64Utils.encodeToString(DEFAULT_RAW_JSON))))
+            .andExpect(jsonPath("$.[*].documentImage").value(hasItem(DEFAULT_DOCUMENT_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE.toString())))
@@ -236,9 +236,9 @@ public class ServiceRespResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(serviceResp.getId().intValue()))
-            .andExpect(jsonPath("$.rawJson").value(DEFAULT_RAW_JSON.toString()))
-            .andExpect(jsonPath("$.documentImageContentType").value(DEFAULT_DOCUMENT_IMAGE_CONTENT_TYPE))
-            .andExpect(jsonPath("$.documentImage").value(Base64Utils.encodeToString(DEFAULT_DOCUMENT_IMAGE)))
+            .andExpect(jsonPath("$.rawJsonContentType").value(DEFAULT_RAW_JSON_CONTENT_TYPE))
+            .andExpect(jsonPath("$.rawJson").value(Base64Utils.encodeToString(DEFAULT_RAW_JSON)))
+            .andExpect(jsonPath("$.documentImage").value(DEFAULT_DOCUMENT_IMAGE.toString()))
             .andExpect(jsonPath("$.createdBy").value(DEFAULT_CREATED_BY.toString()))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
             .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE.toString()))
@@ -267,8 +267,8 @@ public class ServiceRespResourceIntTest {
         ServiceResp updatedServiceResp = serviceRespRepository.findOne(serviceResp.getId());
         updatedServiceResp
                 .rawJson(UPDATED_RAW_JSON)
+                .rawJsonContentType(UPDATED_RAW_JSON_CONTENT_TYPE)
                 .documentImage(UPDATED_DOCUMENT_IMAGE)
-                .documentImageContentType(UPDATED_DOCUMENT_IMAGE_CONTENT_TYPE)
                 .createdBy(UPDATED_CREATED_BY)
                 .startDate(UPDATED_START_DATE)
                 .endDate(UPDATED_END_DATE)
@@ -287,8 +287,8 @@ public class ServiceRespResourceIntTest {
         assertThat(serviceRespList).hasSize(databaseSizeBeforeUpdate);
         ServiceResp testServiceResp = serviceRespList.get(serviceRespList.size() - 1);
         assertThat(testServiceResp.getRawJson()).isEqualTo(UPDATED_RAW_JSON);
+        assertThat(testServiceResp.getRawJsonContentType()).isEqualTo(UPDATED_RAW_JSON_CONTENT_TYPE);
         assertThat(testServiceResp.getDocumentImage()).isEqualTo(UPDATED_DOCUMENT_IMAGE);
-        assertThat(testServiceResp.getDocumentImageContentType()).isEqualTo(UPDATED_DOCUMENT_IMAGE_CONTENT_TYPE);
         assertThat(testServiceResp.getCreatedBy()).isEqualTo(UPDATED_CREATED_BY);
         assertThat(testServiceResp.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testServiceResp.getEndDate()).isEqualTo(UPDATED_END_DATE);
@@ -354,9 +354,9 @@ public class ServiceRespResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(serviceResp.getId().intValue())))
-            .andExpect(jsonPath("$.[*].rawJson").value(hasItem(DEFAULT_RAW_JSON.toString())))
-            .andExpect(jsonPath("$.[*].documentImageContentType").value(hasItem(DEFAULT_DOCUMENT_IMAGE_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].documentImage").value(hasItem(Base64Utils.encodeToString(DEFAULT_DOCUMENT_IMAGE))))
+            .andExpect(jsonPath("$.[*].rawJsonContentType").value(hasItem(DEFAULT_RAW_JSON_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].rawJson").value(hasItem(Base64Utils.encodeToString(DEFAULT_RAW_JSON))))
+            .andExpect(jsonPath("$.[*].documentImage").value(hasItem(DEFAULT_DOCUMENT_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].createdBy").value(hasItem(DEFAULT_CREATED_BY.toString())))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE.toString())))

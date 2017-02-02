@@ -6,14 +6,14 @@
     <dl class="dl-horizontal jh-entity-details">
         <dt><span data-translate="ocrApiGateway2App.serviceResp.rawJson">Raw Json</span></dt>
         <dd>
-            <span>{{vm.serviceResp.rawJson}}</span>
+            <div ng-if="vm.serviceResp.rawJson">
+                <a ng-click="vm.openFile(vm.serviceResp.rawJsonContentType, vm.serviceResp.rawJson)" data-translate="entity.action.open">open</a>
+                {{vm.serviceResp.rawJsonContentType}}, {{vm.byteSize(vm.serviceResp.rawJson)}}
+            </div>
         </dd>
         <dt><span data-translate="ocrApiGateway2App.serviceResp.documentImage">Document Image</span></dt>
         <dd>
-            <div ng-if="vm.serviceResp.documentImage">
-                <a ng-click="vm.openFile(vm.serviceResp.documentImageContentType, vm.serviceResp.documentImage)" data-translate="entity.action.open">open</a>
-                {{vm.serviceResp.documentImageContentType}}, {{vm.byteSize(vm.serviceResp.documentImage)}}
-            </div>
+            <span>{{vm.serviceResp.documentImage}}</span>
         </dd>
         <dt><span data-translate="ocrApiGateway2App.serviceResp.createdBy">Created By</span></dt>
         <dd>

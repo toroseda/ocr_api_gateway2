@@ -51,11 +51,11 @@
             <tbody>
                 <tr ng-repeat="serviceResp in vm.serviceResps track by serviceResp.id">
                     <td><a ui-sref="service-respocrData-detail({id:serviceResp.id})">{{serviceResp.id}}</a></td>
-                    <td>{{serviceResp.rawJson}}</td>
                     <td>
-                        <a ng-if="serviceResp.documentImage" ng-click="vm.openFile(serviceResp.documentImageContentType, serviceResp.documentImage)" data-translate="entity.action.open">open</a>
-                        <span ng-if="serviceResp.documentImage">{{serviceResp.documentImageContentType}}, {{vm.byteSize(serviceResp.documentImage)}}</span>
+                        <a ng-if="serviceResp.rawJson" ng-click="vm.openFile(serviceResp.rawJsonContentType, serviceResp.rawJson)" data-translate="entity.action.open">open</a>
+                        <span ng-if="serviceResp.rawJson">{{serviceResp.rawJsonContentType}}, {{vm.byteSize(serviceResp.rawJson)}}</span>
                     </td>
+                    <td>{{serviceResp.documentImage}}</td>
                     <td>{{serviceResp.createdBy}}</td>
                         <td>{{serviceResp.startDate | date:'mediumDate'}}</td>
                         <td>{{serviceResp.endDate | date:'mediumDate'}}</td>
